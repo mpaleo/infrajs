@@ -1,0 +1,6 @@
+{
+  "name": "Infrajs",
+  "tagline": "Desktop interface for Docker",
+  "body": "## Requirements\r\n- [Docker](https://docs.docker.com/engine/installation/)\r\n\r\n## Dependencies\r\n```bash\r\nnpm install\r\n```\r\n\r\n## Run gulp tasks\r\n```bash\r\ngulp\r\n```\r\n\r\n## Run electron app\r\n```bash\r\n# Local\r\n./node_modules/.bin/electron .\r\n\r\n# Global\r\nelectron .\r\n```\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
