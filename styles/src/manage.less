@@ -1,0 +1,39 @@
+@import "colors";
+@import "common";
+
+#logs-container,
+#terminal-container {
+    background-color : @grey;
+    padding          : 16px;
+    overflow-y       : scroll;
+    height           : 380px;
+    max-height       : 380px;
+}
+
+#terminal-input,
+#terminal-output,
+#terminal-user {
+    color       : @white;
+    font-family : monospace;
+    font-size   : 14px;
+}
+
+#terminal-user {
+    position    : absolute;
+    left        : 0;
+    line-height : 23px;
+}
+
+#terminal-input {
+    padding    : 0 0 0 17px;
+    width      : 100%;
+    background : none;
+    border     : none;
+    box-sizing : border-box;
+}
+
+#terminal-output {
+    width       : 100%;
+    display     : block;
+    white-space : pre-wrap;
+}

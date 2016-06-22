@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InfraJS</title>
+
+    <link rel="stylesheet" href="../node_modules/material-design-lite/dist/material.blue-amber.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="../styles/dist/manage.min.css">
+</head>
+
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <span class="mdl-layout-title">InfraJS</span>
+                <div class="mdl-layout-spacer"></div>
+                <nav class="mdl-navigation mdl-layout--large-screen-only">
+                    <a class="mdl-navigation__link" href="projects.html">Projects</a>
+                    <a class="mdl-navigation__link" href="">Settings</a>
+                    <a class="mdl-navigation__link" href="">GitHub</a>
+                </nav>
+            </div>
+        </header>
+
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">InfraJS</span>
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link" href="projects.html">Projects</a>
+                <a class="mdl-navigation__link" href="">Settings</a>
+                <a class="mdl-navigation__link" href="">GitHub</a>
+            </nav>
+        </div>
+
+        <main id="app" class="mdl-layout__content">
+            <div class="page-content">
+                <div class="mdl-grid">
+
+                    <!-- General -->
+                    <div class="mdl-cell mdl-cell--4-col">
+                        <div class="mdl-card mdl-shadow--2dp">
+                            <div class="mdl-card__title mdl-card--expand">
+                                <h2 class="mdl-card__title-text">General</h2>
+                            </div>
+                            <ul class="mdl-list">
+                                <li class="mdl-list__item mdl-list__item--two-line">
+                                    <span class="mdl-list__item-primary-content">
+                                        <span class="mdl-list__item-sub-title">Project name</span><span>{{ project.name }}</span>
+                                    </span>
+                                </li>
+                                <li class="mdl-list__item mdl-list__item--two-line">
+                                    <span class="mdl-list__item-primary-content">
+                                        <span class="mdl-list__item-sub-title">Description</span><span>{{ project.description }}</span>
+                                    </span>
+                                </li>
+                                <li class="mdl-list__item mdl-list__item--two-line">
+                                    <span class="mdl-list__item-primary-content">
+                                        <span class="mdl-list__item-sub-title">Code path</span><span>{{ project.codePath }}</span>
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Network -->
+                    <div class="mdl-cell mdl-cell--4-col">
+                        <div class="mdl-card mdl-shadow--2dp">
+                            <div class="mdl-card__title mdl-card--expand">
+                                <h2 class="mdl-card__title-text">Network</h2>
+                            </div>
+                            <ul class="mdl-list">
+                                <li class="mdl-list__item mdl-list__item--two-line">
+                                    <span class="mdl-list__item-primary-content">
+                                        <span class="mdl-list__item-sub-title">IP</span><span>172.17.0.34</span>
+                                    </span>
+                                </li>
+                                <li class="mdl-list__item mdl-list__item--two-line">
+                                    <span class="mdl-list__item-primary-content">
+                                        <span class="mdl-list__item-sub-title">Port mapping</span><span>8090:tcp/80</span>
+                                    </span>
+                                </li>
+                                <li class="mdl-list__item mdl-list__item--two-line">
+                                    <span class="mdl-list__item-primary-content">
+                                        <span class="mdl-list__item-sub-title">Stub 1</span><span>Stuff</span>
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Containers -->
+                    <div class="mdl-cell mdl-cell--4-col">
+                        <div class="mdl-card mdl-shadow--2dp">
+                            <div class="mdl-card__title mdl-card--expand">
+                                <h2 class="mdl-card__title-text">Containers</h2>
+                            </div>
+                            <ul class="mdl-list">
+                                <li class="mdl-list__item mdl-list__item--two-line">
+                                    <span class="mdl-list__item-primary-content">
+                                        <span class="mdl-list__item-sub-title">Stub 1</span><span>Stuff</span>
+                                    </span>
+                                </li>
+                                <li class="mdl-list__item mdl-list__item--two-line">
+                                    <span class="mdl-list__item-primary-content">
+                                        <span class="mdl-list__item-sub-title">Stub 2</span><span>Stuff</span>
+                                    </span>
+                                </li>
+                                <li class="mdl-list__item mdl-list__item--two-line">
+                                    <span class="mdl-list__item-primary-content">
+                                        <span class="mdl-list__item-sub-title">Stub 3</span><span>Stuff</span>
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+                        <div class="mdl-tabs__tab-bar">
+                            <a href="#logs-panel" class="mdl-tabs__tab is-active">Logs</a>
+                            <a href="#terminal-panel" class="mdl-tabs__tab">Terminal</a>
+                        </div>
+
+                        <div class="mdl-tabs__panel is-active" id="logs-panel">
+
+                            <!-- Logs -->
+                            <div class="mdl-cell mdl-cell--12-col">
+                                <div id="logs-container" class="mdl-card mdl-shadow--2dp">
+                                    <!-- TODO: Show docker logs -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mdl-tabs__panel" id="terminal-panel">
+
+                            <!-- Terminal -->
+                            <div class="mdl-cell mdl-cell--12-col">
+                                <div id="terminal-container" class="mdl-card mdl-shadow--2dp">
+                                    <div style="position: relative; width: 100%; float: left;">
+                                        <div id="terminal-output"></div>
+                                        <span id="terminal-user">&gt;</span>
+                                        <input id="terminal-input" type="text" v-model="command.current" @keyup.enter="sendCommand" @keyup.up="bufferUp" @keyup.down="bufferDown">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button @click="getInfrastructure()" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored fixed-fab" style="bottom: 110px; right: 32px;">
+                    <i class="material-icons">cloud_download</i>
+                </button>
+
+                <button @click="runInfrastructure()" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored fixed-fab">
+                    <i class="material-icons">play_arrow</i>
+                </button>
+
+                <div id="snackbar-container" class="mdl-js-snackbar mdl-snackbar">
+                    <div class="mdl-snackbar__text"></div>
+                    <button class="mdl-snackbar__action" type="button"></button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../node_modules/material-design-lite/material.min.js"></script>
+    <script src="../scripts/dist/manage.js"></script>
+</body>
+
+</html>
