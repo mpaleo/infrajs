@@ -3,78 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <title>Infrajs by mpaleo</title>
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1">
-    <link rel="stylesheet"
-          type="text/css"
-          href="stylesheets/normalize.css"
-          media="screen">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700'
-          rel='stylesheet'
-          type='text/css'>
-    <link rel="stylesheet"
-          type="text/css"
-          href="stylesheets/stylesheet.css"
-          media="screen">
-    <link rel="stylesheet"
-          type="text/css"
-          href="stylesheets/github-light.css"
-          media="screen">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
 </head>
 <body>
 <section class="page-header">
     <h1 class="project-name">Infrajs</h1>
-    <h2 class="project-tagline">Desktop interface for Docker</h2>
-    <a href="https://github.com/mpaleo/infrajs"
-       class="btn">View on GitHub</a>
-    <a href="https://github.com/mpaleo/infrajs/zipball/master"
-       class="btn">Download .zip</a>
-    <a href="https://github.com/mpaleo/infrajs/tarball/master"
-       class="btn">Download .tar.gz</a>
+    <h2 class="project-tagline">Development environment manager</h2>
+    <a href="https://github.com/mpaleo/infrajs" class="btn" target="_blank">View on GitHub</a>
+    <a href="https://github.com/mpaleo/infrajs/zipball/master" class="btn">Download .zip</a>
+    <a href="https://github.com/mpaleo/infrajs/tarball/master" class="btn">Download .tar.gz</a>
 </section>
 
 <section class="main-content">
+    <p>
+        Create development environments for your projects without the clutter that comes by installing stuff like languages and servers. With Infrajs you can deploy lightweight and decoupled environments on your machine based on containers powered by docker.
+    </p>
+
     <h2>
-        <a id="requirements"
-           class="anchor"
-           href="#requirements"
-           aria-hidden="true"><span aria-hidden="true"
-                                    class="octicon octicon-link"></span></a>Requirements</h2>
+        <a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Requirements
+    </h2>
+
+    <p>
+        You must have <a href="https://docs.docker.com/engine/installation/" target="_blank">Docker</a> installed
+    </p>
+
+    <h2>
+        <a id="installers" class="anchor" href="#installers" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installers
+    </h2>
 
     <ul>
-        <li><a href="https://docs.docker.com/engine/installation/">Docker</a></li>
+        <li><a href="#">.deb</a> <small>(coming soon)</small></li>
+        <li><a href="#">.rpm</a> <small>(coming soon)</small></li>
+        <li><a href="#">.exe</a> <small>(coming soon)</small></li>
     </ul>
 
     <h2>
-        <a id="dependencies"
-           class="anchor"
-           href="#dependencies"
-           aria-hidden="true"><span aria-hidden="true"
-                                    class="octicon octicon-link"></span></a>Dependencies</h2>
+        <a id="development" class="anchor" href="#development" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Development
+    </h2>
 
-    <div class="highlight highlight-source-shell">
-        <pre>npm install</pre>
-    </div>
+    <h3>
+        <a id="useful-commands" class="anchor" href="#useful-commands" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Useful commands
+    </h3>
 
-    <h2>
-        <a id="run-gulp-tasks"
-           class="anchor"
-           href="#run-gulp-tasks"
-           aria-hidden="true"><span aria-hidden="true"
-                                    class="octicon octicon-link"></span></a>Run gulp tasks</h2>
+    <div class="highlight highlight-source-shell"><pre><span class="pl-c"># Install dependencies</span>
+npm install
 
-    <div class="highlight highlight-source-shell">
-        <pre>gulp</pre>
-    </div>
+<span class="pl-c"># Compile and watch</span>
+gulp
 
-    <h2>
-        <a id="run-electron-app"
-           class="anchor"
-           href="#run-electron-app"
-           aria-hidden="true"><span aria-hidden="true"
-                                    class="octicon octicon-link"></span></a>Run electron app</h2>
-
-    <div class="highlight highlight-source-shell"><pre><span class="pl-c"># Local</span>
+<span class="pl-c"># Local</span>
 ./node_modules/.bin/electron <span class="pl-c1">.</span>
 
 <span class="pl-c"># Global</span>
@@ -82,17 +63,13 @@ electron <span class="pl-c1">.</span></pre>
     </div>
 
     <h3>
-        <a id="license"
-           class="anchor"
-           href="#license"
-           aria-hidden="true"><span aria-hidden="true"
-                                    class="octicon octicon-link"></span></a>License
+        <a id="license" class="anchor" href="#license" aria-hidden="true" target="_blank"><span aria-hidden="true" class="octicon octicon-link"></span></a>License
     </h3>
 
-    <p>The Infrajs application is licensed under the <a href="http://opensource.org/licenses/MIT">MIT license</a></p>
+    <p>The Infrajs application is licensed under the <a href="http://opensource.org/licenses/MIT" target="_blank">MIT license</a></p>
 
     <footer class="site-footer">
-        <span class="site-footer-owner"><a href="https://github.com/mpaleo/infrajs">Infrajs</a> is maintained by <a href="https://github.com/mpaleo">mpaleo</a>.</span>
+        <span class="site-footer-owner"><a href="https://github.com/mpaleo/infrajs" target="_blank">Infrajs</a> is maintained by <a href="https://github.com/mpaleo">mpaleo</a>.</span>
     </footer>
 
 </section>
