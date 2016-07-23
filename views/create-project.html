@@ -3,16 +3,12 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>InfraJS</title>
 
-    <link rel="stylesheet"
-          href="../node_modules/material-design-lite/dist/material.blue-amber.min.css">
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet"
-          href="../styles/dist/create-project.min.css">
+    <link rel="stylesheet" href="../node_modules/material-design-lite/dist/material.blue-amber.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="../styles/dist/create-project.min.css">
 </head>
 
 <body>
@@ -22,28 +18,21 @@
             <span class="mdl-layout-title">InfraJS</span>
             <div class="mdl-layout-spacer"></div>
             <nav class="mdl-navigation mdl-layout--large-screen-only">
-                <a class="mdl-navigation__link"
-                   href="projects.html">Projects</a>
-                <a class="mdl-navigation__link"
-                   href="">Settings</a>
-                <a class="mdl-navigation__link"
-                   href="">GitHub</a>
+                <a class="mdl-navigation__link" href="projects.html">Projects</a>
+                <a class="mdl-navigation__link" href="">Settings</a>
+                <a class="mdl-navigation__link" href="">GitHub</a>
             </nav>
         </div>
     </header>
     <div class="mdl-layout__drawer">
         <span class="mdl-layout-title">InfraJS</span>
         <nav class="mdl-navigation">
-            <a class="mdl-navigation__link"
-               href="projects.html">Projects</a>
-            <a class="mdl-navigation__link"
-               href="">Settings</a>
-            <a class="mdl-navigation__link"
-               href="">GitHub</a>
+            <a class="mdl-navigation__link" href="projects.html">Projects</a>
+            <a class="mdl-navigation__link" href="">Settings</a>
+            <a class="mdl-navigation__link" href="">GitHub</a>
         </nav>
     </div>
-    <main id="app"
-          class="mdl-layout__content">
+    <main id="app" class="mdl-layout__content">
         <div class="page-content">
             <div class="mdl-grid">
 
@@ -57,35 +46,22 @@
 
                             <div class="mdl-cell mdl-cell--12-col">
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <input v-model="project.name"
-                                           id="project-name"
-                                           class="mdl-textfield__input"
-                                           type="text">
-                                    <label class="mdl-textfield__label"
-                                           for="project-name">Project name</label>
+                                    <input v-model="project.name" id="project-name" class="mdl-textfield__input" type="text">
+                                    <label class="mdl-textfield__label" for="project-name">Project name</label>
                                 </div>
                             </div>
 
                             <div class="mdl-cell mdl-cell--12-col">
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <input v-model="project.codePath"
-                                           id="project-code-path"
-                                           class="mdl-textfield__input"
-                                           type="text">
-                                    <label class="mdl-textfield__label"
-                                           for="project-code-path">Code path (could be agit url)</label>
+                                    <input v-model="project.codePath" id="project-code-path" class="mdl-textfield__input" type="text">
+                                    <label class="mdl-textfield__label" for="project-code-path">Code path (could be agit url)</label>
                                 </div>
                             </div>
 
                             <div class="mdl-cell mdl-cell--12-col">
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <textarea v-model="project.description"
-                                              id="project-description"
-                                              class="mdl-textfield__input"
-                                              type="text"
-                                              rows="3"></textarea>
-                                    <label class="mdl-textfield__label"
-                                           for="project-description">Description</label>
+                                    <textarea v-model="project.description" id="project-description" class="mdl-textfield__input" type="text" rows="3"></textarea>
+                                    <label class="mdl-textfield__label" for="project-description">Description</label>
                                 </div>
                             </div>
 
@@ -94,164 +70,58 @@
                 </div>
 
                 <div class="mdl-cell mdl-cell--12-col">
-                    <h3>App language</h3>
+                    <h3>Select your stack</h3>
                 </div>
 
-                <div v-for="container in containers.appLang"
-                     class="mdl-cell mdl-cell--4-col">
-                    <div v-bind:class="{ 'mdl-card-disabled': container.disabled }"
-                         class="mdl-card mdl-shadow--2dp mdl-card-docker-container">
+                <div v-for="stack in stacks" class="mdl-cell mdl-cell--4-col">
+                    <div v-bind:class="{ 'mdl-card-disabled': stack.disabled }" class="mdl-card mdl-shadow--2dp mdl-card-docker-container">
 
-                        <div class="mdl-card__title mdl-card--expand"
-                             style="background-color: {{ container.color }}">
-                            <h2 class="mdl-card__title-text">{{ container.name }}</h2>
+                        <div class="mdl-card__title mdl-card--expand" style="background-color: {{ stack.color }}">
+                            <h2 class="mdl-card__title-text">{{ stack.name }}</h2>
                         </div>
 
-                        <div class="mdl-card__supporting-text">{{ container.description }}</div>
+                        <div class="mdl-card__supporting-text">
+                            {{ stack.description }}
+
+                            <p v-for="container in stack.containers"></p>
+
+                            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+                                <thead>
+                                <tr>
+                                    <th>Container</th>
+                                    <th>Version</th>
+                                    <th>Official</th>
+                                    <th>Doc</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr v-for="container in stack.containers">
+                                    <td class="mdl-data-table__cell--non-numeric">{{container.name}}</td>
+                                    <td class="mdl-data-table__cell--non-numeric">{{container.version}}</td>
+                                    <td v-if="container.official">
+                                        <a class="mdl-list__item-secondary-action"><i class="material-icons">star</i></a>
+                                    </td>
+                                    <td v-else>
+                                        <i class="material-icons">star</i>
+                                    </td>
+                                    <td>
+                                        <a class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored" href="{{container.doc}}">
+                                            <i class="material-icons">link</i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
 
                         <div class="mdl-card__actions mdl-card--border">
-                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">DockerHub</a>
+                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">GitHub</a>
 
                             <div class="mdl-layout-spacer"></div>
 
-                            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect"
-                                   for="container-{{ container.name | lowercase }}">
-
-                                <input v-model="project.containers"
-                                       v-bind="{ disabled: container.disabled }"
-                                       id="container-{{ container.name | lowercase }}"
-                                       v-bind:value="{ name: container.name, image: container.image, layer: container.layer }"
-                                       type="checkbox"
-                                       class="mdl-switch__input">
-                                <span class="mdl-switch__label"></span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mdl-cell mdl-cell--12-col">
-                    <h3>Extras</h3>
-                </div>
-
-                <div v-for="container in containers.extras"
-                     class="mdl-cell mdl-cell--4-col">
-                    <div v-bind:class="{ 'mdl-card-disabled': container.disabled }"
-                         class="mdl-card mdl-shadow--2dp mdl-card-docker-container">
-                        <div class="mdl-card__title mdl-card--expand"
-                             style="background-color: {{ container.color }}">
-                            <h2 class="mdl-card__title-text">{{ container.name }}</h2>
-                        </div>
-                        <div class="mdl-card__supporting-text">{{ container.description }}</div>
-                        <div class="mdl-card__actions mdl-card--border">
-                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">DockerHub</a>
-
-                            <div class="mdl-layout-spacer"></div>
-
-                            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect"
-                                   for="container-{{ container.name | lowercase }}">
-                                <input v-model="project.containers"
-                                       v-bind="{ disabled: container.disabled }"
-                                       id="container-{{ container.name | lowercase }}"
-                                       v-bind:value="{ name: container.name, image: container.image, layer: container.layer }"
-                                       type="checkbox"
-                                       class="mdl-switch__input">
-                                <span class="mdl-switch__label"></span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mdl-cell mdl-cell--12-col">
-                    <h3>Cache</h3>
-                </div>
-
-                <div v-for="container in containers.cache"
-                     class="mdl-cell mdl-cell--4-col">
-                    <div v-bind:class="{ 'mdl-card-disabled': container.disabled }"
-                         class="mdl-card mdl-shadow--2dp mdl-card-docker-container">
-                        <div class="mdl-card__title mdl-card--expand"
-                             style="background-color: {{ container.color }}">
-                            <h2 class="mdl-card__title-text">{{ container.name }}</h2>
-                        </div>
-                        <div class="mdl-card__supporting-text">{{ container.description }}</div>
-                        <div class="mdl-card__actions mdl-card--border">
-                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">DockerHub</a>
-
-                            <div class="mdl-layout-spacer"></div>
-
-                            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect"
-                                   for="container-{{ container.name | lowercase }}">
-                                <input v-model="project.containers"
-                                       v-bind="{ disabled: container.disabled }"
-                                       id="container-{{ container.name | lowercase }}"
-                                       v-bind:value="{ name: container.name, image: container.image, layer: container.layer }"
-                                       type="checkbox"
-                                       class="mdl-switch__input">
-                                <span class="mdl-switch__label"></span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mdl-cell mdl-cell--12-col">
-                    <h3>Storage</h3>
-                </div>
-
-                <div v-for="container in containers.storage"
-                     class="mdl-cell mdl-cell--4-col">
-                    <div v-bind:class="{ 'mdl-card-disabled': container.disabled }"
-                         class="mdl-card mdl-shadow--2dp mdl-card-docker-container">
-                        <div class="mdl-card__title mdl-card--expand"
-                             style="background-color: {{ container.color }}">
-                            <h2 class="mdl-card__title-text">{{ container.name }}</h2>
-                        </div>
-                        <div class="mdl-card__supporting-text">{{ container.description }}</div>
-                        <div class="mdl-card__actions mdl-card--border">
-                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">DockerHub</a>
-
-                            <div class="mdl-layout-spacer"></div>
-
-                            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect"
-                                   for="container-{{ container.name | lowercase }}">
-                                <input v-model="project.containers"
-                                       v-bind="{ disabled: container.disabled }"
-                                       id="container-{{ container.name | lowercase }}"
-                                       v-bind:value="{ name: container.name, image: container.image, layer: container.layer }"
-                                       type="checkbox"
-                                       class="mdl-switch__input">
-                                <span class="mdl-switch__label"></span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mdl-cell mdl-cell--12-col">
-                    <h3>Server</h3>
-                </div>
-
-                <div v-for="container in containers.servers"
-                     class="mdl-cell mdl-cell--4-col">
-                    <div v-bind:class="{ 'mdl-card-disabled': container.disabled }"
-                         class="mdl-card mdl-shadow--2dp mdl-card-docker-container">
-                        <div class="mdl-card__title mdl-card--expand"
-                             style="background-color: {{ container.color }}">
-                            <h2 class="mdl-card__title-text">{{ container.name }}</h2>
-                        </div>
-                        <div class="mdl-card__supporting-text">{{ container.description }}</div>
-                        <div class="mdl-card__actions mdl-card--border">
-                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">DockerHub</a>
-
-                            <div class="mdl-layout-spacer"></div>
-
-                            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect"
-                                   for="container-{{ container.name | lowercase }}">
-                                <input v-model="project.containers"
-                                       v-bind="{ disabled: container.disabled }"
-                                       id="container-{{ container.name | lowercase }}"
-                                       v-bind:value="{ name: container.name, image: container.image, layer: container.layer }"
-                                       type="checkbox"
-                                       class="mdl-switch__input">
-                                <span class="mdl-switch__label"></span>
+                            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="stack-{{ stack.name | lowercase }}">
+                                <input v-model="project.stack" v-bind="{ disabled: stack.disabled }" id="stack-{{ stack.name | lowercase }}" v-bind:value="stack" name="stack" type="radio" class="mdl-radio__button">
+                                <span class="mdl-radio__label"></span>
                             </label>
                         </div>
                     </div>
@@ -259,18 +129,14 @@
             </div>
 
             <!-- Create FAB -->
-            <button id="create-new-project-fab"
-                    @click="create()"
-                    class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored fixed-fab">
+            <button id="create-new-project-fab" @click="create()" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored fixed-fab">
                 <i class="material-icons">done</i>
             </button>
 
             <!-- Snackbar -->
-            <div id="snackbar-container"
-                 class="mdl-js-snackbar mdl-snackbar">
+            <div id="snackbar-container" class="mdl-js-snackbar mdl-snackbar">
                 <div class="mdl-snackbar__text"></div>
-                <button class="mdl-snackbar__action"
-                        type="button"></button>
+                <button class="mdl-snackbar__action" type="button"></button>
             </div>
         </div>
     </main>

@@ -20,6 +20,7 @@ const vue = new Vue({
         project: {}
     },
     attached() {
+        // Load project data
         this.project = new Project().find(View.parameters().projectId);
     },
     methods: {
@@ -76,11 +77,13 @@ const vue = new Vue({
 
             const docker = new Docker();
 
-            docker.create('nginx:alpine', this.project.codePath, {
+            docker.createStack(this.project, {
                 onFinished: (container) => {
-                    Snackbar.show('Infrastructure ready');
+                    Snackbar.show(`Container ready [${container.Name.substring(1)}]`);
 
-                    // TODO: Store container ID
+                    // TODO: store container ID
+                    //this.project.update();
+
                     console.info(container);
                     console.info(`Container ID: ${container.Id}`);
                     console.info(`Container IP: ${container.NetworkSettings.IPAddress}`);
@@ -96,7 +99,10 @@ const vue = new Vue({
 
             const docker = new Docker();
 
-            docker.pull('nginx:alpine', {
+            docker.pullStack(this.project.stack);
+
+            // TODO: extract callbacks
+            /*docker.pull('nginx:alpine', {
                 onProgress: (event) => {
                     console.log(`Status: ${event.status}`);
 
@@ -112,7 +118,7 @@ const vue = new Vue({
                     Snackbar.show('Error: Check the container name/tag');
                     console.error(err);
                 }
-            });
+            });*/
         }
     }
 });

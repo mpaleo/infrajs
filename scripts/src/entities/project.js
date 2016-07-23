@@ -16,6 +16,20 @@ export default class {
         }).value();
     }
 
+    /*
+    TODO: project update
+    update() {
+        this.db.get('projects')
+            .find({id: this.id})
+            .assign({
+                name: this.name,
+                description: this.description,
+                codePath: this.codePath,
+                stack: this.stack
+            })
+            .value()
+    }*/
+
     all() {
         return this.db.get('projects').value();
     }
